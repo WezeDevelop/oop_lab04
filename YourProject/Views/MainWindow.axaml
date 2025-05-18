@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:YourProject.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="YourProject.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="YourProject">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <StackPanel Margin="10" Spacing="10">
+    
+    <TextBlock Text="Одновимірний масив (через пробіл):"/>
+    <TextBox Text="{Binding OneDimensionalInput, Mode=TwoWay}"/>
+    <Button Content="Обробити 1D масив" Command="{Binding Process1DCommand}"/>
+    <TextBlock Text="{Binding OneDResult}" TextWrapping="Wrap"/>
+
+    <Separator Margin="10"/>
+    
+    <TextBlock Text="Двовимірний масив (через пробіл):"/>
+    <TextBox Text="{Binding TwoDimensionalInput, Mode=TwoWay}"/>
+    
+    <StackPanel Orientation="Horizontal" Spacing="5">
+      <TextBlock Text="Рядки:"/>
+      <TextBox Width="50" Text="{Binding RowsInput}"/>
+      <TextBlock Text="Стовпці:"/>
+      <TextBox Width="50" Text="{Binding ColsInput}"/>
+    </StackPanel>
+
+    <TextBlock Text="Індекси: i1 j1, i2 j2, i3 j3"/>
+    <StackPanel Orientation="Horizontal" Spacing="5">
+      <TextBox Width="30" Text="{Binding I1}"/>
+      <TextBox Width="30" Text="{Binding J1}"/>
+      <TextBox Width="30" Text="{Binding I2}"/>
+      <TextBox Width="30" Text="{Binding J2}"/>
+      <TextBox Width="30" Text="{Binding I3}"/>
+      <TextBox Width="30" Text="{Binding J3}"/>
+    </StackPanel>
+
+    <Button Content="Обробити 2D масив" Command="{Binding Process2DCommand}"/>
+    <TextBlock Text="{Binding TwoDResult}" TextWrapping="Wrap"/>
+
+  </StackPanel>
+
+</Window>
